@@ -1,0 +1,3 @@
+- Set up Application Load Balancer
+- Set up Rails app via Elastic Beanstalk
+- Set up Postgres Multitenant Schemas
