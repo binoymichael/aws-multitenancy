@@ -1,3 +1,8 @@
 - Set up Application Load Balancer
-- Set up Rails app via Elastic Beanstalk
 - Set up Postgres Multitenant Schemas
+  - https://msdn.microsoft.com/en-us/library/aa479086.aspx#mlttntda_tdc
+  - https://jerodsanto.net/2011/07/building-multi-tenant-rails-apps-with-postgresql-schemas/
+
+
+- Integrate devise
+- Integrate multi-tenancy
