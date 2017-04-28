@@ -7,6 +7,5 @@ class AssignmentsController < ApplicationController
   end
 
   def new
-    render :json => '{foo: "root"}'
   end
 end
