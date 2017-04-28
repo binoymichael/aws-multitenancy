@@ -4,15 +4,13 @@
   - https://jerodsanto.net/2011/07/building-multi-tenant-rails-apps-with-postgresql-schemas/
 
 
-- Integrate devise
-- Integrate multi-tenancy
+Submit form
+- process file
+- call shell
+if success 
+show image and grading page
+else
+display error
+end
 
-Tenant Binoy
-
-Assignment
-- tenant_id 
-- user_id
-- student_id
-- description
-- grades
-
+- client side validations
