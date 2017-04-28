@@ -10,18 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428032339) do
+ActiveRecord::Schema.define(version: 20170428075243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
-    t.integer "tenant_id"
-    t.integer "user_id"
-    t.string  "student_id",      default: "", null: false
-    t.string  "assignment_type", default: "", null: false
-    t.string  "description",     default: "", null: false
-    t.jsonb   "grades",          default: {}
+    t.integer  "tenant_id"
+    t.integer  "user_id"
+    t.string   "student_id",           default: "", null: false
+    t.string   "assignment_type",      default: "", null: false
+    t.string   "description",          default: "", null: false
+    t.jsonb    "grades",               default: {}
+    t.string   "diagram_file_name"
+    t.string   "diagram_content_type"
+    t.integer  "diagram_file_size"
+    t.datetime "diagram_updated_at"
     t.index ["tenant_id"], name: "index_assignments_on_tenant_id", using: :btree
     t.index ["user_id"], name: "index_assignments_on_user_id", using: :btree
   end

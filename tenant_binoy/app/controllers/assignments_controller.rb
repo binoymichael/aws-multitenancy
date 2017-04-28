@@ -25,17 +25,28 @@ class AssignmentsController < ApplicationController
         end
       end
 
-      commands = ["scripts/umlparser.sh", tempdir, "output_#{Time.now.to_i}"]
+      output_filename = "output_#{Time.now.to_i}"
+
+      commands = ["scripts/umlparser.sh", tempdir, output_filename]
       output, status = Open3.capture2(*commands)
-      render json: output.to_s
+
+      if status.exitstatus != 0
+        # TODO Error handling
+        raise 'hell'
+      end
+
+      @assignment.diagram = File.open(output_filename + ".png")
+      @assignment.save!
+      redirect_to @assignment
     ensure
       FileUtils.remove_entry tempdir
+      FileUtils.remove_entry output_filename + ".java" if File.exist?(output_filename + ".java")
+      FileUtils.remove_entry output_filename + ".png" if File.exist?(output_filename + ".png")
     end
+  end
 
-  #if status.exitstatus != 0
-    ## TODO Better exception
-    #raise 'Error'
-
+  def show
+    @assignment = current_user.assignments.find(params[:id])
   end
 
   def assignment_params
