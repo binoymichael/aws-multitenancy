@@ -13,4 +13,13 @@ else
 display error
 end
 
+- create a docker image
+- push it to docker hub
+- pull it in AMI
+- give script to start docker from AMI launch script
+  
+- sequence diagram
+- aws deploy
 - client side validations
+- error handling
+- grade update page
