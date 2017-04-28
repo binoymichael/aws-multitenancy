@@ -8,3 +8,11 @@
 - Integrate multi-tenancy
 
 Tenant Binoy
+
+Assignment
+- tenant_id 
+- user_id
+- student_id
+- description
+- grades
+

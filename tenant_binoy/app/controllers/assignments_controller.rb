@@ -7,5 +7,6 @@ class AssignmentsController < ApplicationController
   end
 
   def new
+    @assignment = current_user.assignments.build
   end
 end

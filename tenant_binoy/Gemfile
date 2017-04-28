@@ -52,3 +52,4 @@ gem 'acts_as_tenant'
 gem 'bootstrap-sass'
 gem "twitter-bootstrap-rails"
 gem 'devise-bootstrap-views'
+gem 'simple_form'

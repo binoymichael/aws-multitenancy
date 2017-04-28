@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   acts_as_tenant(:tenant)
   validates_uniqueness_to_tenant :email
+
+  has_many :assignments
 end
