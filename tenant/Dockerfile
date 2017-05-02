@@ -11,6 +11,7 @@ COPY Gemfile Gemfile.lock ./
 RUN gem install bundler && bundle install --jobs 20 --retry 5 --without development test
 
 ENV RAILS_ENV production
+ENV RAILS_SERVE_STATIC_FILES true
 ENV SECRET_KEY_BASE somesecret
 ENV DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
 ENV RAILS_RELATIVE_URL_ROOT="/tenant-{$tenant}"
