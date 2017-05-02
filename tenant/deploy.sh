@@ -1,6 +1,6 @@
 # Install ruby and other dependencies
 sudo apt-get update
-sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev postgresql-client libpq-dev nodejs
+sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev postgresql-client libpq-dev nodejs upstart-sysv
 
 cd
 git clone git://github.com/sstephenson/rbenv.git .rbenv
@@ -18,10 +18,7 @@ rbenv global 2.3.4
 gem install bundler
 
 
-cd ~
-wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma-manager.conf
-wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma.conf
-
+bundle binstubs puma --path /usr/local/bin
 
 
 # App specific
