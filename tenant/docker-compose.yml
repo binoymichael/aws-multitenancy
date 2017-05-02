@@ -1,12 +1,16 @@
 app:
   image: "tenant-${tenant}"
   command: bundle exec puma -C config/puma.rb
-  ports:
-    - "3000:3000"
+  expose:
+    - "3000"
   environment:
     RAILS_ENV: production
-    SECRET_KEY_BASE: 'hellosecret'
-    DATABASE_URL: "postgres://root:password@parser.cjchzbqfursc.us-west-1.rds.amazonaws.com:5432/parsertest"
+    SECRET_KEY_BASE: "${SECRET_KEY_BASE}"
+    DATABASE_URL: "${DATABASE_URL}"
     RAILS_RELATIVE_URL_ROOT: "/tenant-${tenant}"
-
-
+nginx:
+  image: "parser-nginx"
+  ports:
+    - "80:80"
+  links:
+    - "app:app"
