@@ -27,7 +27,10 @@ class AssignmentsController < ApplicationController
 
       output_filename = "output_#{Time.now.to_i}"
 
-      commands = ["scripts/umlparser.sh", tempdir, output_filename]
+      commands = ["scripts/umlparser.sh"] 
+      commands.push("-s") if assignment_params[:assignment_type] == 'sequence'
+      commands.push(tempdir, output_filename)
+
       output, status = Open3.capture2(*commands)
 
       if status.exitstatus != 0
@@ -35,13 +38,18 @@ class AssignmentsController < ApplicationController
         raise 'hell'
       end
 
-      @assignment.diagram = File.open(output_filename + ".png")
+      if assignment_params[:assignment_type] == 'sequence'
+        @assignment.diagram = File.open(output_filename + ".svg")
+      else
+        @assignment.diagram = File.open(output_filename + ".png")
+      end
       @assignment.save!
       redirect_to edit_assignment_url(@assignment)
     ensure
       FileUtils.remove_entry tempdir
       FileUtils.remove_entry output_filename + ".java" if File.exist?(output_filename + ".java")
       FileUtils.remove_entry output_filename + ".png" if File.exist?(output_filename + ".png")
+      FileUtils.remove_entry output_filename + ".svg" if File.exist?(output_filename + ".svg")
     end
   end
 
