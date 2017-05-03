@@ -37,7 +37,7 @@ class AssignmentsController < ApplicationController
 
       @assignment.diagram = File.open(output_filename + ".png")
       @assignment.save!
-      redirect_to @assignment
+      redirect_to edit_assignment_url(@assignment)
     ensure
       FileUtils.remove_entry tempdir
       FileUtils.remove_entry output_filename + ".java" if File.exist?(output_filename + ".java")
@@ -45,8 +45,26 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def update
+    @assignment = current_user.assignments.find(params[:id])
+    @assignment.grades = Grade.new(grade_params)
+    if @assignment.save
+      redirect_to @assignment
+    else
+      render :edit
+    end
+  end
+
   def show
     @assignment = current_user.assignments.find(params[:id])
+  end
+
+  def edit
+    @assignment = current_user.assignments.find(params[:id])
+  end
+
+  def grade_params
+    params.require(:assignment).require(:grades).permit(:points, :comments)
   end
 
   def assignment_params

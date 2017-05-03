@@ -1,0 +1,20 @@
+<div class="col-lg-6">
+  <div class="page-header">
+    <h3>Output</h3>
+  </div>
+  <%= image_tag @assignment.diagram.url %>
+</div>
+<div class="col-lg-6">
+  <div class="page-header">
+    <h3>Grade</h3>
+  </div>
+
+  <%= form_for @assignment do |f| %>
+    <%= f.simple_fields_for :grades do |grades_form| %>
+      <%= grades_form.input :points, label: 'Points', required: true, input_html: {value: @assignment.grades[:points]}  %>
+      <%= grades_form.input :comments, label: 'Comments', as: :text, required: false, input_html: {value: @assignment.grades[:comments]} %>
+      <%= grades_form.button :submit, 'Update' %>
+    <% end %>
+  <% end %>
+</div>
+

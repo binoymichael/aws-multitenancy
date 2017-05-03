@@ -1,8 +1,8 @@
 <h3>UML Parser</h3>
 <hr>
 <%= simple_form_for(@assignment, html: {multipart: true} ) do |f| %>
-  <%= f.input :student_id, label: 'Student ID', placeholder: 'Student ID' %>
-  <%= f.input :description, label: 'Assignment Code', placeholder: 'Assignment Code' %>
+  <%= f.input :student_id, label: 'Student ID', placeholder: 'Student ID', required: true %>
+  <%= f.input :description, label: 'Assignment Code', placeholder: 'Assignment Code', required: true %>
 
   <%= f.label :assignment_type %>
   <%= f.collection_radio_buttons(:assignment_type, [['class', 'Class Diagram'], ['sequence', 'Sequence Diagram']], :first, :last, item_wrapper_tag: :div, item_wrapper_class: :radio, checked: 'class') { |b| content_tag(:label) { b.radio_button + b.label } }  %>
