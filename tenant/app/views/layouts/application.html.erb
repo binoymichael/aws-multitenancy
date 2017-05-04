@@ -38,18 +38,19 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top" style="background-color: #ff4444;">
+    <div class="navbar navbar-default navbar-static-top" style="background-color: <%= current_tenant.settings['theme'] rescue 'blue' %>">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><%= current_tenant.name %></a>
+        <%= link_to current_tenant.name, root_path, class: 'navbar-brand' %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-            <li><%= link_to "Link1", "/path1"  %></li>
+            <li><%= link_to "New Assignment", root_path %></li>
+            <li><%= link_to "Assignments", assignments_path %></li>
             <li>
             <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
             </li>

@@ -3,6 +3,10 @@ class Grade
 
   attribute :points, Integer
   attribute :comments, String
+
+  def description
+    ["Points: #{points}", "Comments: #{comments}"].join(",\n")
+  end
 end
 
 class GradeType < ActiveRecord::Type::Value
