@@ -1,11 +1,11 @@
 class Grade
   include Virtus.model
 
-  attribute :points, Integer
+  attribute :complete, Boolean
   attribute :comments, String
 
   def description
-    ["Points: #{points}", "Comments: #{comments}"].join(",\n")
+    ["Complete: #{complete ? 'Yes' : 'No'}", "Comments: #{comments}"].join(",\n")
   end
 end
 
