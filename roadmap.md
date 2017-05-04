@@ -18,11 +18,15 @@ end
 - pull it in AMI
 - give script to start docker from AMI launch script
   
-- sequence diagram
-- aws deploy
-- client side validations
-- error handling
+x sequence diagram
 x grade update page
+x fix header links
+x customisable header color
+x add assignments index
+- aws deploy
+
+- error handling
+- client side validations
 
 
 

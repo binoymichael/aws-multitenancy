@@ -1,11 +1,11 @@
 class Grade
   include Virtus.model
 
-  attribute :points, Integer
+  attribute :scale, String
   attribute :comments, String
 
   def description
-    ["Points: #{points}", "Comments: #{comments}"].join(",\n")
+    ["Scale: #{scale}", "Comments: #{comments}"].join(",\n")
   end
 end
 
