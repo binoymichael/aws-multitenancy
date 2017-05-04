@@ -5,7 +5,7 @@
   <%= f.input :description, label: 'Assignment Code', placeholder: 'Assignment Code', required: true %>
 
   <%= f.label :assignment_type %>
-  <%= f.collection_radio_buttons(:assignment_type, [['class', 'Class Diagram'], ['sequence', 'Sequence Diagram']], :first, :last, item_wrapper_tag: :div, item_wrapper_class: :radio, checked: 'class') { |b| content_tag(:label) { b.radio_button + b.label } }  %>
+  <%= f.collection_radio_buttons(:assignment_type, [['class', 'Class Diagram']], :first, :last, item_wrapper_tag: :div, item_wrapper_class: :radio, checked: 'class') { |b| content_tag(:label) { b.radio_button + b.label } }  %>
   <%= f.input :java_source_zip, as: :file, :label => 'Java Source Files zip' %>
   <%= f.button :submit, 'Submit' %>
 <% end %>
