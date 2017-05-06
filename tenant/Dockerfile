@@ -1,7 +1,7 @@
 FROM ruby:2.3-slim
 ARG tenant
 
-RUN apt-get update && apt-get install -qq -y --fix-missing --no-install-recommends build-essential nodejs libpq-dev postgresql-client-9.4
+RUN apt-get update && apt-get install -qq -y --fix-missing --no-install-recommends build-essential nodejs libpq-dev postgresql-client-9.4 default-jre graphviz aspectj plotutils
 
 ENV APP_HOME /app
 RUN mkdir -p $APP_HOME
